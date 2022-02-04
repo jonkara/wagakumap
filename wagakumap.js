@@ -3,7 +3,7 @@
 //
 // 全国和楽大全
 // たにし＠じょんからドットコム
-// Ver 20220126
+// Ver 20220204
 //
 //======================================
 
@@ -170,7 +170,7 @@ function getData() {
 
 // マーカーの初回作成
 function createMarkers() {
-    for (var i = 0; i < items.length; i++) {
+    for (var i = 0; i < items.length; i ++) {
         createMarker(i);
     }
 }
@@ -326,7 +326,17 @@ function createMarker(n) {
     //    }
     //});
 
-    content = '<table class="items"><tr><td class="items" colspan=2><strong><p class="items_title">' + items[n].title + '</p></strong></td></tr><tr><td class="items">種別</td><td class="items">' + categoryName + '</td></tr><tr><td class="items">取扱楽器・流派</td><td class="items">' + instrument + '</td></tr><tr><td class="items">ウェブサイト</td><td class="items"><a href="' + items[n].url + '" target=_blank>' + items[n].url + '</a></td></tr><tr><td class="items">住所</td><td class="items">' + items[n].address + '</td></tr><tr><td class="items">電話</td><td class="items">' + items[n].phone + '</td></tr><tr><td class="items">営業時間</td><td class="items">' + items[n].openinghour + '</td></tr></table><p class="right">更新日：' + items[n].updated_at + '</p>';
+    // URL情報を取得
+    var urlAry = items[n].url.split(';');
+    var url = "";
+    br = "";
+    for (var i = 0; i < urlAry.length; i ++) {
+        url += br + '<a href="' + urlAry[i] + '" target=_blank>' + urlAry[i] + '</a>';
+        br = "<br>";
+    }
+
+    // マーカーを作成
+    content = '<table class="items"><tr><td class="items" colspan=2><strong><p class="items_title">' + items[n].title + '</p></strong></td></tr><tr><td class="items">種別</td><td class="items">' + categoryName + '</td></tr><tr><td class="items">取扱楽器・流派</td><td class="items">' + instrument + '</td></tr><tr><td class="items">ウェブサイト</td><td class="items">' + url + '</td></tr><tr><td class="items">住所</td><td class="items">' + items[n].address + '</td></tr><tr><td class="items">電話</td><td class="items">' + items[n].phone + '</td></tr><tr><td class="items">営業時間</td><td class="items">' + items[n].openinghour + '</td></tr></table><p class="right">更新日：' + items[n].updated_at + '</p>';
     var pos = new google.maps.LatLng({
         lat: parseFloat(items[n].lat),
         lng: parseFloat(items[n].lng)
@@ -339,11 +349,15 @@ function createMarker(n) {
         id: n,
         content: content
     });
+
+    // リスナーを設定
     google.maps.event.addListener(marker, 'click', function () {
         infoWindow.setContent(this.content);
         infoWindow.open(map, marker);
     });
     markers.push(marker);
+
+    // マーカーを全件作成したら表示・非表示を設定
     if (markers.length == items.length) {
         showMarkers();
     }
