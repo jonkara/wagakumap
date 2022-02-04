@@ -1,0 +1,125 @@
+﻿/* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+#header {
+    height: 90px;
+    padding: 5px;
+}
+#map {
+    height: calc(100% - 90px);
+}
+
+/* Optional: Makes the sample page fill the window. */
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#floating-panel {
+    position: absolute;
+    top: 100px;
+    left: 0%;
+    z-index: 5;
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #999;
+    text-align: left;
+    font-family: "Roboto", "sans-serif";
+    line-height: 20px;
+    padding-left: 10px;
+}
+
+#floating-panel {
+    background-color: #fff;
+    border: 0;
+    border-radius: 2px;
+    box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.3);
+    margin: 10px;
+    padding: 0 0.5em;
+    font: 400 16px Roboto, Arial, sans-serif;
+    overflow: hidden;
+    padding: 20px;
+    font-size: 14px;
+    text-align: left;
+    line-height: 20px;
+    width: 420px;
+    height: auto;
+}
+
+ul, li {
+    padding: 0;
+    margin: 0;
+    list-style-type: none
+}
+
+table {
+    border-collapse: collapse;
+    border: 0px none;
+    background-color: #ffffff; /* 全体の背景色 */
+}
+
+th, td {
+    border: 0px none;
+}
+
+table.searchbox {
+    width: 100%;
+    border: 0px none;
+    background-color: #f6f6f6; /* 全体の背景色 */
+}
+
+tr.searchbox1, td.searchbox1 {
+    padding: 5px 15px; /* 上下 左右 */
+    border: 0px none;
+}
+
+tr.searchbox2-1, td.searchbox2-1 {
+    width: 50%;
+    padding: 5px 10px; /* 上下 左右 */
+    border: 0px none;
+}
+
+tr.searchbox2-2, td.searchbox2-2 {
+    width: 25%;
+    padding: 5px 10px; /* 上下 左右 */
+    border: 0px none;
+}
+
+tr.searchbox3, td.searchbox3 {
+    width: 33%;
+    padding: 5px 15px; /* 上下 左右 */
+    border: 0px none;
+}
+
+table.items {
+    border-collapse: collapse;
+    border: solid 1px #888;
+    background-color: #f0f2f7; /* 全体の背景色 */
+}
+
+tr.items, td.items {
+    padding: 5px 15px; /* 上下 左右 */
+    border: solid 1px #333; /* 線の種類 太さ 色 */
+}
+
+.items_title {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 2px;
+}
+
+.normal {
+    margin: 0;
+}
+
+.indent {
+    text-indent: 1em;
+    margin: 0;
+}
+
+.right {
+    text-align: right;
+    margin: 0;
+}
