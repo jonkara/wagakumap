@@ -123,3 +123,69 @@ tr.items, td.items {
     text-align: right;
     margin: 0;
 }
+
+.header0 {
+    height: 90px;
+    padding: 5px;
+}
+
+.header1 {
+   float: left;
+   text-align: left;
+   height: 90px;
+}
+
+.header2 {
+   text-align: right;
+   height: 90px;
+}
+
+@media screen and (max-width: 1180px) { /* レスポンシブ対応*/
+    .header0 {
+        height: 200px;
+        padding: 5px;
+    }
+    .header1 {
+        text-align: left;
+        height: 90px;
+    }
+    .header2 {
+        text-align: center;
+        height: 90px;
+    }
+}
+
+.clearboth {
+    clear:both;
+}
+
+h1.detail {
+    padding: 0.5em; /*文字周りの余白*/
+    color: #494949; /*文字色*/
+    background: #d0f0bb; /*背景色*/
+    border-left: solid 5px #63ad35; /*左線（実線 太さ 色）*/
+}
+
+table.detail {
+    border-collapse: collapse;
+    border: solid 1px #888;
+}
+
+tr.detail1, td.detail1 {
+    padding: 5px 15px; /* 上下 左右 */
+    border: solid 1px #ccc; /* 線の種類 太さ 色 */
+    background-color: #f3ffeb; /* 全体の背景色 */
+}
+
+tr.detail2, td.detail2 {
+    padding: 5px 15px; /* 上下 左右 */
+    border: solid 1px #ccc; /* 線の種類 太さ 色 */
+}
+
+
+hr.detail {
+    height: 1px;
+    background-color: #63ad35;
+    border: none;
+    color: #63ad35;
+}
