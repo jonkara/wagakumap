@@ -3,7 +3,7 @@
 //
 // 全国和楽大全
 // たにし＠じょんからドットコム
-// Ver 20220206
+// Ver 20220211
 //
 //======================================
 
@@ -336,7 +336,7 @@ function createMarker(n) {
     }
 
     // マーカーを作成
-    content = '<table class="items"><tr><td class="items" colspan=2><strong><p class="items_title"><a href="https://wagakumap.jonkara.com/detail.php?id=' + items[n].id + '" target=_blank>' + items[n].title + '</a></p></strong></td></tr><tr><td class="items">種別</td><td class="items">' + categoryName + '</td></tr><tr><td class="items">取扱楽器・流派</td><td class="items">' + instrument + '</td></tr><tr><td class="items">ウェブサイト</td><td class="items">' + url + '</td></tr><tr><td class="items">住所</td><td class="items">' + items[n].address + '</td></tr><tr><td class="items">電話</td><td class="items">' + items[n].phone + '</td></tr><tr><td class="items">営業時間</td><td class="items">' + items[n].openinghour + '</td></tr></table><p class="right">更新日：' + items[n].updated_at + '</p>';
+    content = '<table class="items"><tr><td class="items" colspan=2><strong><p class="items_title"><a href="https://wagakumap.jonkara.com/detail.php?id=' + items[n].id + '" target=_blank>' + items[n].title + '</a></p></strong></td></tr><tr><td class="items">種別</td><td class="items">' + categoryName + '</td></tr><tr><td class="items">取扱楽器・流派</td><td class="items">' + instrument + '</td></tr><tr><td class="items">ウェブサイト</td><td class="items">' + url + '</td></tr><tr><td class="items">住所</td><td class="items">' + items[n].address + '</td></tr><tr><td class="items">電話</td><td class="items">' + items[n].phone + '</td></tr><tr><td class="items">営業時間</td><td class="items">' + items[n].openinghour + '</td></tr></table><p class="left"><a href="https://wagakumap.jonkara.com/detail.php?id=' + items[n].id + '" target=_blank>詳細ページを表示</a></p><p class="right">更新日：' + items[n].updated_at + '</p>';
     var pos = new google.maps.LatLng({
         lat: parseFloat(items[n].lat),
         lng: parseFloat(items[n].lng)
