@@ -1,15 +1,18 @@
 ﻿
 //======================================
 //
-// 全国和楽大全
+// 世界和楽大全
 // たにし＠じょんからドットコム
-// Ver 20220211
+// Ver 20220309
 //
 //======================================
 
 
 // 地図
 let map;
+
+// 言語
+var lang = 1;
 
 // 住所取得
 var geocoder;
@@ -89,6 +92,9 @@ function initMap() {
     const control = document.getElementById("floating-panel");
     map.controls[google.maps.ControlPosition.TOP_LEFT].push(control);
 
+    // 言語の取得
+    lang = parseInt(document.getElementById("language").value);
+
     // チェックボックスの変更を検知
     const onChangeHandler = function () {
         //getCategoryChecked();
@@ -155,12 +161,12 @@ function initMap() {
 function getData() {
     $.ajax({
         type: "POST",
-        url: "wagakumapdata.php",
+        url: "wagakupediadata.php",
         dataType: "json",
         success: function (data) {
             items = data;
             createMarkers();
-            document.getElementById("num").textContent = items.length + "件";
+            document.getElementById("num").textContent = items.length;
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             alert('Error : ' + errorThrown);
@@ -183,22 +189,22 @@ function createMarker(n) {
     // マーカーアイコンを設定
     var icon = "";
     if (items[n].category1 == 1) {
-        categoryName += br + "和楽器店";
+        categoryName += br + (lang ? "和楽器店" : "Japanese musical instrument shop");
         br = "<br>";
         icon = "https://maps.google.com/mapfiles/ms/micons/orange-dot.png";
     }
     if (items[n].category2 == 1) {
-        categoryName += br + "音楽教室";
+        categoryName += br + (lang ? "和楽器教室" : "Japanese music class");
         br = "<br>";
         icon = "https://maps.google.com/mapfiles/ms/micons/blue-dot.png";
     }
     if (items[n].category3 == 1) {
-        categoryName += br + "演奏団体";
+        categoryName += br + (lang ? "演奏団体" : "group of musicians");
         br = "<br>";
         icon = "https://maps.google.com/mapfiles/ms/micons/green-dot.png";
     }
     if (items[n].category4 == 1) {
-        categoryName += br + "演奏会場・飲食店";
+        categoryName += br + (lang ? "演奏会場・飲食店" : "concert hall / restaurant");
         br = "<br>";
         icon = "https://maps.google.com/mapfiles/ms/micons/yellow-dot.png";
     }
@@ -208,112 +214,112 @@ function createMarker(n) {
     var spl = "";
     var br = "";
     if (items[n].shamisen == 1 && items[n].shamisenT != 1 && items[n].shamisenJ != 1 && items[n].shamisenM != 1 && items[n].shamisenN != 1 && items[n].shamisenG != 1 && items[n].shamisenK != 1) {
-        instrument += br + "三味線";
+        instrument += br + (lang ? "三味線" : "Shamisen");
         br = "<br>";
-        spl = " ／ ";
+        spl = " / ";
     }
     if (items[n].shamisenT == 1) {
-        instrument += br + "津軽三味線";
+        instrument += br + (lang ? "津軽三味線" : "Tsugaru Shamisen");
         br = "<br>";
-        spl = " ／ ";
+        spl = " / ";
     }
     if (items[n].shamisenT1 == 1) {
-        instrument += spl + "澤田流";
+        instrument += spl + (lang ? "澤田流" : "Sawada style");
         spl = ", ";
     }
     if (items[n].shamisenT2 == 1) {
-        instrument += spl + "小山流";
+        instrument += spl + (lang ? "小山流" : "Oyama style");
         spl = ", ";
     }
     if (items[n].shamisenT3 == 1) {
-        instrument += spl + "高橋流";
+        instrument += spl + (lang ? "高橋流" : "Takahashi style");
         spl = ", ";
     }
     if (items[n].shamisenG == 1) {
-        instrument += br + "義太夫三味線";
+        instrument += br + (lang ? "義太夫三味線" : "Gidayu Shamisen");
         br = "<br>";
-        spl = " ／ ";
+        spl = " / ";
     }
     if (items[n].shamisenJ == 1) {
-        instrument += br + "地歌三味線";
+        instrument += br + (lang ? "地歌三味線" : "Jiuta Shamisen");
         br = "<br>";
-        spl = " ／ ";
+        spl = " / ";
     }
     if (items[n].shamisenM == 1) {
-        instrument += br + "民謡三味線";
+        instrument += br + (lang ? "民謡三味線" : "Minyo Shamisen");
         br = "<br>";
-        spl = " ／ ";
+        spl = " / ";
     }
     if (items[n].shamisenN == 1) {
-        instrument += br + "長唄三味線";
+        instrument += br + (lang ? "長唄三味線" : "Nagauta Shamisen");
         br = "<br>";
-        spl = " ／ ";
+        spl = " / ";
     }
     if (items[n].shamisenK == 1) {
-        instrument += br + "小唄・端唄・清元三味線";
+        instrument += br + (lang ? "小唄・端唄・清元三味線" : "Kouta, Hauta, Kiyomoto Shamisen");
         br = "<br>";
-        spl = " ／ ";
+        spl = " / ";
     }
     if (items[n].koto == 1) {
-        instrument += br + "箏";
+        instrument += br + (lang ? "箏" : "Koto");
         br = "<br>";
-        spl = " ／ ";
+        spl = " / ";
     }
     if (items[n].koto1 == 1) {
-        instrument += spl + "生田流";
+        instrument += spl + (lang ? "生田流" : "Ikuta style");
         spl = ", ";
     }
     if (items[n].koto2 == 1) {
-        instrument += spl + "山田流";
+        instrument += spl + (lang ? "山田流" : "Yamada style");
         spl = ", ";
     }
     if (items[n].shakuhachi == 1) {
-        instrument += br + "尺八";
+        instrument += br + (lang ? "尺八" : "Shakuhachi");
         br = "<br>";
-        spl = " ／ ";
+        spl = " / ";
     }
     if (items[n].shakuhachi1 == 1) {
-        instrument += spl + "都山流";
+        instrument += spl + (lang ? "都山流" : "Tozan style");
         spl = ", ";
     }
     if (items[n].shakuhachi2 == 1) {
-        instrument += spl + "琴古流";
+        instrument += spl + (lang ? "琴古流" : "Kinko style");
         spl = ", ";
     }
     if (items[n].shinobue == 1) {
-        instrument += br + "篠笛・能管";
+        instrument += br + (lang ? "篠笛・能管" : "Shinobue, Nokan");
         br = "<br>";
-        spl = " ／ ";
+        spl = " / ";
     }
     if (items[n].sanshin == 1) {
-        instrument += br + "沖縄三線";
+        instrument += br + (lang ? "沖縄三線" : "Okinawa Sanshin");
         br = "<br>";
-        spl = " ／ ";
+        spl = " / ";
     }
     if (items[n].biwa == 1) {
-        instrument += br + "琵琶";
+        instrument += br + (lang ? "琵琶" : "Biwa");
         br = "<br>";
-        spl = " ／ ";
+        spl = " / ";
     }
     if (items[n].taiko == 1) {
-        instrument += br + "太鼓・鼓";
+        instrument += br + (lang ? "太鼓・鼓" : "Taiko, Tsuzumi");
         br = "<br>";
-        spl = " ／ ";
+        spl = " / ";
     }
     if (items[n].kokyu == 1) {
-        instrument += br + "胡弓";
+        instrument += br + (lang ? "胡弓" : "Kokyu");
         br = "<br>";
-        spl = " ／ ";
+        spl = " / ";
     }
     if (items[n].gagaku == 1) {
-        instrument += br + "雅楽三管";
+        instrument += br + (lang ? "雅楽三管" : "Gagaku");
         br = "<br>";
-        spl = " ／ ";
+        spl = " / ";
     }
     if (items[n].taishou == 1) {
-        instrument += br + "大正琴";
+        instrument += br + (lang ? "大正琴" : "Taisho Koto");
         br = "<br>";
-        spl = " ／ ";
+        spl = " / ";
     }
 
     // 住所から経度緯度を取得
@@ -336,7 +342,12 @@ function createMarker(n) {
     }
 
     // マーカーを作成
-    content = '<table class="items"><tr><td class="items" colspan=2><strong><p class="items_title"><a href="https://wagakumap.jonkara.com/detail.php?id=' + items[n].id + '" target=_blank>' + items[n].title + '</a></p></strong></td></tr><tr><td class="items">種別</td><td class="items">' + categoryName + '</td></tr><tr><td class="items">取扱楽器・流派</td><td class="items">' + instrument + '</td></tr><tr><td class="items">ウェブサイト</td><td class="items">' + url + '</td></tr><tr><td class="items">住所</td><td class="items">' + items[n].address + '</td></tr><tr><td class="items">電話</td><td class="items">' + items[n].phone + '</td></tr><tr><td class="items">営業時間</td><td class="items">' + items[n].openinghour + '</td></tr></table><p class="left"><a href="https://wagakumap.jonkara.com/detail.php?id=' + items[n].id + '" target=_blank>詳細ページを表示</a></p><p class="right">更新日：' + items[n].updated_at + '</p>';
+    content = ""
+    if (lang == 1) {
+        content = '<table class="items"><tr><td class="items" colspan=2><strong><p class="items_title"><a href="https://wagakupedia.jonkara.com/jp/detail.php?id=' + items[n].id + '" target=_blank>' + items[n].title + '</a></p></strong></td></tr><tr><td class="items">種別</td><td class="items">' + categoryName + '</td></tr><tr><td class="items">取扱楽器・流派</td><td class="items">' + instrument + '</td></tr><tr><td class="items">ウェブサイト</td><td class="items">' + url + '</td></tr><tr><td class="items">住所</td><td class="items">' + items[n].address + '</td></tr><tr><td class="items">電話</td><td class="items">' + items[n].phone + '</td></tr><tr><td class="items">営業時間</td><td class="items">' + items[n].openinghour + '</td></tr></table><p class="left"><a href="https://wagakupedia.jonkara.com/jp/detail.php?id=' + items[n].id + '" target=_blank>詳細ページを表示</a></p><p class="right">更新日：' + items[n].updated_at + '</p>';
+    } else {
+        content = '<table class="items"><tr><td class="items" colspan=2><strong><p class="items_title"><a href="https://wagakupedia.jonkara.com/en/detail.php?id=' + items[n].id + '" target=_blank>' + items[n].title + '</a></p></strong></td></tr><tr><td class="items">category</td><td class="items">' + categoryName + '</td></tr><tr><td class="items">instrument, style</td><td class="items">' + instrument + '</td></tr><tr><td class="items">website</td><td class="items">' + url + '</td></tr><tr><td class="items">address</td><td class="items">' + items[n].address + '</td></tr><tr><td class="items">phone</td><td class="items">' + items[n].phone + '</td></tr><tr><td class="items">opening hour</td><td class="items">' + items[n].openinghour + '</td></tr></table><p class="left"><a href="https://wagakupedia.jonkara.com/en/detail.php?id=' + items[n].id + '" target=_blank>show the detail page</a></p><p class="right">updated: ' + items[n].updated_at + '</p>';
+    }
     var pos = new google.maps.LatLng({
         lat: parseFloat(items[n].lat),
         lng: parseFloat(items[n].lng)
