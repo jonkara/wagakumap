@@ -22,8 +22,8 @@
     <meta charset="utf-8">
     <title><?php echo ($lang ? "和楽器店舗・教室・団体検索サービス 世界和楽大全 - じょんからドットコム" : "The World Wagakupedia - Search for Japanese musical instrument shops, classes, organizations"); ?></title>
     <link rel="stylesheet" type="text/css" href="./style.css" />
-    <link rel="alternate" href="https://wagakupedia.jonkara.com/jp/" hreflang="ja" />
-    <link rel="alternate" href="https://wagakupedia.jonkara.com/en/" hreflang="en" />
+    <link rel="alternate" hreflang="ja" href="https://wagakupedia.jonkara.com/jp/" />
+    <link rel="alternate" hreflang="en" href="https://wagakupedia.jonkara.com/en/" />
     <script src="./wagakupedia.js"></script>
 </head>
 <body>
@@ -46,7 +46,7 @@
     </td></tr></table>
     </div>
     <ul id="floating-panel">
-        <?php echo ($lang ? "世界和楽大全は、全国・世界各地の和楽器関連の店舗・団体などを<br />まとめて検索できるサービスです。" : "The World Wagakupedia is a service that allows you to search for shops, organizations, etc. related to Japanese musical instruments(Wagakki) in various regions."); ?>
+        <?php echo ($lang ? "世界和楽大全は、全国・世界各地の和楽器関連の店舗・団体などを<br />まとめて検索できるサービスです。（現在開発中）" : "The World Wagakupedia is a service that allows you to search for shops, organizations, etc. related to Japanese musical instruments(Wagakki) in various regions.(Now developing)"); ?>
         <h3 align="left"><?php echo ($lang ? "種別" : "category"); ?></h3>
         <center>
             <table class="searchbox">

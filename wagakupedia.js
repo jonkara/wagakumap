@@ -3,7 +3,7 @@
 //
 // 世界和楽大全
 // たにし＠じょんからドットコム
-// Ver 20220309
+// Ver 20220406
 //
 //======================================
 
@@ -161,7 +161,7 @@ function initMap() {
 function getData() {
     $.ajax({
         type: "POST",
-        url: "wagakupediadata.php",
+        url: "alldata.php",
         dataType: "json",
         success: function (data) {
             items = data;
