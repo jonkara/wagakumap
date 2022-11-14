@@ -3,7 +3,7 @@
 //
 // 世界和楽大全
 // たにし＠じょんからドットコム
-// Ver 20220406
+// Ver 20221114
 //
 //======================================
 
@@ -74,7 +74,7 @@ function initMap() {
     var opts = {
         mapTypeControl: false,
         center: center,
-        zoom: 11
+        zoom: 10
     }
 
     // 初期化
